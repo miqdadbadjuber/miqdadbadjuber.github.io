@@ -195,16 +195,24 @@
         }
 
         /* ======================== */
-        /* 3D Canvas                */
         /* ======================== */
-        #webgl-canvas {
+        /* 3D Canvas / Iframe       */
+        /* ======================== */
+        #bg-iframe {
             position: absolute;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
             z-index: -1;
             pointer-events: none;
+            border: none;
         }
-
+        
+        @media (min-width: 769px) {
+            #bg-iframe {
+                width: 200vw;
+                transform: translateX(-25vw);
+            }
+        }
         /* ======================== */
         /* Typography               */
         /* ======================== */
@@ -363,7 +371,7 @@
     <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
     <!-- Backgrounds -->
-    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+    <iframe src="assets/bumi.html" id="bg-iframe" aria-hidden="true" frameborder="0"></iframe>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
 
@@ -1399,6 +1407,7 @@
 
         // Scene setup
         const canvas = document.getElementById('webgl-canvas');
+        if (!canvas) return;
         const scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(0x020202, 0.02); 
 
