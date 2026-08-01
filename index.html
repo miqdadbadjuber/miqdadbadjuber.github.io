@@ -108,9 +108,9 @@
             .backdrop-blur-sm { -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
         }
 
-        /* Performance optimizations */
+        /* GSAP handles performance automatically */
         .gsap-fade, .gsap-hero > * {
-            will-change: transform, opacity;
+            /* will-change removed for mobile memory optimization */
         }
 
         /* FOUC prevention — content fades in after fonts/scripts load */
@@ -288,6 +288,9 @@
             opacity: 0.04; mix-blend-mode: overlay;
             background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
         }
+        @media (max-width: 1024px) {
+            .noise { display: none; }
+        }
 
         /* HUD Lines */
         .hud-line { width: 1px; background: linear-gradient(to bottom, transparent, rgba(0,240,255,0.4), transparent); }
@@ -310,11 +313,9 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             color: rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 6px;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
             cursor: default;
             user-select: none;
             line-height: 1.6;
@@ -371,7 +372,12 @@
     <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
     <!-- Backgrounds -->
-    <iframe src="assets/bumi.html" id="bg-iframe" aria-hidden="true" frameborder="0"></iframe>
+    <iframe data-src="assets/bumi.html" id="bg-iframe" aria-hidden="true" frameborder="0"></iframe>
+    <script>
+        if (window.innerWidth > 1024) {
+            document.getElementById('bg-iframe').src = "assets/bumi.html";
+        }
+    </script>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
 
@@ -828,6 +834,17 @@
         <!-- CERTIFICATIONS GRID -->
         <div id="content-certs" role="tabpanel" aria-labelledby="tab-btn-certs" class="hidden gsap-fade">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Certificate 12 -->
+                <a href="https://www.dicoding.com/certificates/QLZ99J629Z5D" target="_blank" rel="noopener noreferrer" class="border border-white/[0.06] rounded-xl overflow-hidden hover:border-cyanGlow/30 transition-all duration-300 group relative block bg-white/[0.02]" data-cursor-hover>
+                    <div class="aspect-[4/3] w-full overflow-hidden relative border-b border-white/[0.06]">
+                        <img src="assets/certs/cert_12.webp" alt="Certificate - Build Gen AI" loading="lazy" decoding="async" fetchpriority="low" width="800" height="600" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-display text-sm font-bold text-white mb-2 group-hover:text-cyanGlow transition-colors leading-tight">Build Gen AI</h4>
+                        <p class="text-gray-500 text-xs font-display tracking-widest uppercase mt-3 flex items-center gap-2">View Credentials <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></p>
+                    </div>
+                </a>
+
                 <!-- Certificate 0a -->
                 <a href="https://developers.google.com/profile/badges/recognitions/learnings?u=miqdadbadjuber" target="_blank" rel="noopener noreferrer" class="border border-white/[0.06] rounded-xl overflow-hidden hover:border-cyanGlow/30 transition-all duration-300 group relative block bg-white/[0.02]" data-cursor-hover>
                     <div class="aspect-[4/3] w-full overflow-hidden relative border-b border-white/[0.06]">
@@ -944,6 +961,17 @@
                     </div>
                     <div class="p-5">
                         <h4 class="font-display text-sm font-bold text-white mb-2 group-hover:text-cyanGlow transition-colors leading-tight">Fullstack Web Development</h4>
+                        <p class="text-gray-500 text-xs font-display tracking-widest uppercase mt-3 flex items-center gap-2">View Credentials <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></p>
+                    </div>
+                </a>
+
+                <!-- Certificate 11 -->
+                <a href="https://www.dicoding.com/certificates/1RXYWKQO3ZVM" target="_blank" rel="noopener noreferrer" class="border border-white/[0.06] rounded-xl overflow-hidden hover:border-cyanGlow/30 transition-all duration-300 group relative block bg-white/[0.02]" data-cursor-hover>
+                    <div class="aspect-[4/3] w-full overflow-hidden relative border-b border-white/[0.06]">
+                        <img src="assets/certs/cert_11.webp" alt="Certificate - Data Science" loading="lazy" decoding="async" fetchpriority="low" width="800" height="600" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-display text-sm font-bold text-white mb-2 group-hover:text-cyanGlow transition-colors leading-tight">Data Science</h4>
                         <p class="text-gray-500 text-xs font-display tracking-widest uppercase mt-3 flex items-center gap-2">View Credentials <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></p>
                     </div>
                 </a>
@@ -1312,13 +1340,12 @@
         // Navbar hide/show on scroll — throttled via rAF to avoid layout thrashing
         let lastScroll = 0;
         let navTicking = false;
-        let currentScroll = 0;
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            currentScroll = window.scrollY; // DOM read outside rAF
             if (!navTicking) {
                 navTicking = true;
                 requestAnimationFrame(() => {
+                    let currentScroll = window.scrollY; // DOM read inside rAF
                     if (currentScroll <= 0) {
                         navbar.style.transform = 'translateY(0)';
                     } else if (currentScroll > lastScroll && currentScroll > 50) {
@@ -1421,11 +1448,13 @@
         renderer.toneMappingExposure = 1.2; 
 
         const renderScene = new RenderPass(scene, camera);
-        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.8, 0.8, 0.1);
         
         const composer = new EffectComposer(renderer);
         composer.addPass(renderScene);
-        composer.addPass(bloomPass);
+        if (window.innerWidth > 1024) {
+            const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.8, 0.8, 0.1);
+            composer.addPass(bloomPass);
+        }
 
         // "The Quantum Core" — 3D object group
         const coreGroup = new THREE.Group();
@@ -1528,7 +1557,7 @@
                 if (!clock.running) clock.start();
                 animate();
             }
-        }, { threshold: 0 });
+        }, { threshold: 0, rootMargin: "-20% 0px" });
         observer.observe(document.getElementById('home'));
 
         function animate() {
